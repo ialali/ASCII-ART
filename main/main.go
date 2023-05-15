@@ -8,9 +8,7 @@ import (
 
 func main() {
 	str := strings.Join(os.Args[1:], " ")
-	fmt.Println(str)
 	words := strings.Split(str, `\n`)
-	fmt.Println(words)
 	file, err := os.ReadFile("standard.txt")
 	if err != nil {
 		panic(err)
