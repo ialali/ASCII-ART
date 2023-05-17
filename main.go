@@ -1,6 +1,8 @@
 package main
 
 import (
+	"ascii_art/myFunctions"
+	"flag"
 	"fmt"
 	"os"
 	"strings"
@@ -9,8 +11,8 @@ import (
 func main() {
 	if len(os.Args) < 2 {
 		fmt.Println("Please specify a word.")
-		return
 	}
+	colorFlag := flag.String("colour", "", "Specify the  colour choice")
 
 	// Retrieve the first command-line argument
 	word := os.Args[1]
@@ -20,7 +22,7 @@ func main() {
 	}
 
 	// Set the default filename to "standard.txt"
-	filename := "standard.txt"
+	filename := "fonts/standard.txt"
 
 	// Check if there are three command-line arguments
 	if len(os.Args) == 3 {
@@ -30,11 +32,11 @@ func main() {
 		// Load the contents of the appropriate file based on the command-line argument
 		switch font {
 		case "shadow":
-			filename = "shadow.txt"
+			filename = "fonts/shadow.txt"
 		case "standard":
-			filename = "standard.txt"
+			filename = "fonts/standard.txt"
 		case "thinkertoy":
-			filename = "thinkertoy.txt"
+			filename = "fonts/thinkertoy.txt"
 		default:
 			fmt.Println("Please specify a valid font. Valid fonts are shadow, standard, and thinkertoy.")
 			return
@@ -47,7 +49,7 @@ func main() {
 		return
 	}
 	var lines []string
-	if filename == "thinkertoy.txt" {
+	if filename == "fonts/thinkertoy.txt" {
 		lines = strings.Split(string(content), "\r\n")
 	} else {
 		lines = strings.Split(string(content), "\n")
@@ -58,7 +60,8 @@ func main() {
 		for _, l := range word {
 			for lineIndex, line := range lines {
 				if lineIndex == (int(l)-32)*9+h {
-					fmt.Print(line)
+					coloredLine := myFunctions.ApplyColor(line, *colorFlag)
+					fmt.Print(coloredLine)
 				}
 			}
 		}
