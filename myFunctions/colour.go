@@ -1,0 +1,5 @@
+package ascii 
+
+func colourArt() {
+	
+}
