@@ -14,9 +14,9 @@ func main() {
 	if *reverse != "" {
 		myFunctions.ReverseAsciiArt(*reverse)
 	}
-	// if *color != "" {
-	// 	myFunctions.ApplyColour(*color)
-	// }
+	if *color != "" {
+		myFunctions.ApplyColour(*color)
+	}
 	if len(os.Args) < 2 {
 		fmt.Println("Please specify a word.")
 		return
