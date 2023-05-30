@@ -1,25 +1,27 @@
 package main
 
 import (
-	"flag"
 	"fmt"
 	"os"
 	"strings"
 )
 
 func main() {
-	reverse := flag.String("reverse", "", "file to read for reverse")
-	// color := flag.String("color", "black", "colouring the asciiArt")
-	flag.Parse()
-	if *reverse != "" {
-		myFunctions.ReverseAsciiArt(*reverse)
-	}
-	if *color != "" {
-		myFunctions.ApplyColour(*color)
-	}
+	// reverse := flag.String("reverse", "", "file to read for reverse")
+	// // color := flag.String("color", "black", "colouring the asciiArt")
+	// flag.Parse()
+	// if *reverse != "" {
+	// 	ReverseAsciiArt(*reverse)
+	// }
+	// if *color != "" {
+	// 	myFunctions.ApplyColour(*color)
+	// }
 	if len(os.Args) < 2 {
-		fmt.Println("Please specify a word.")
+		fmt.Println("Please specify a wd.")
 		return
+	}
+	if len(os.Args) > 3 {
+		fmt.Println()
 	}
 	// Retrieve the first command-line argument
 	word := os.Args[1]
